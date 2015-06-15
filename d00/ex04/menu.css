@@ -1,0 +1,44 @@
+body {
+	background-color: gray;
+}
+
+.menu {
+	line-height: 40px;
+	text-align: center;
+}
+
+.menu ul {
+	list-style-type: none;
+	display: inline;
+}
+
+.menu ul li {
+	background-color: darkgray;
+	float: left;
+	width: 100px;
+}
+
+.menu ul li:hover {
+	background-color: darkslategray;
+}
+
+.menu ul li a {
+	text-decoration: none;
+	color: #A0522D;
+	font-size: 12px;
+}
+
+.menu ul li ul {
+	display: none;
+	margin-left: -40px;
+}
+
+.menu ul li ul li {
+	float: none;
+	border: none;
+	border-top: 3px solid #3399FF;
+}
+
+.menu ul li:hover ul {
+	display: block;
+}
