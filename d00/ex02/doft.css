@@ -125,9 +125,29 @@ a
 }
 .content .col-center .cluster
 {
+	background: url('resources/cluster.jpg') no-repeat;
+	background-size: 1000px 562px;
 	margin: 10px;
 	width: 1000px;
 	height: 562px;
+}
+.content .col-center .cluster .zone-1
+{
+	position: absolute;
+	display: block;
+	top: 340px;
+	left: 340px;
+	width: 140px;
+	height: 220px;
+}
+.content .col-center .cluster .zone-2
+{
+	position: absolute;
+	display: block;
+	top: 320px;
+	left: 795px;
+	width: 197px;
+	height: 179px;
 }
 .content .col-right
 {
