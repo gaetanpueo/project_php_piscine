@@ -3,9 +3,80 @@
 <head>
 	<meta charset="utf-8">
 	<title>B.A.BA</title>
-	<link rel="stylesheet" href="style.css">
-</head>
+	<style>
+	body
+	{
+		background: pink;
+		font-size: 10pt;
+	}
+	#body
+	{
+		width: 800px;
+		min-height: 300px;
+		margin: auto;
+	}
+	h1
+	{
+		text-align: center;
+	}
+	a
+	{
+		text-decoration: none;
+	}
+	
+	.boutique
+	{
+		position: relative;
+		width: 340px;
+		margin: 10px;
+	}
+	.boutique.b1
+	{
+		float: left;
+	}
+	.boutique.b2
+	{
+		float: right;
+	}
+	.logo_boutique
+	{
+		width: 100%;
+		height: auto;
+	}
+	
+	#footer
+	{
+		border-top: 1px solid #999;
+	}
+	#footer .copy
+	{
+		font-size: 9pt;
+		font-family: monospace;
+		font-style: italic;
+		text-align: right;
+	}
+	</style>
 <body>
+
+	<div id="body">
+		
+		<h1>&Eacute;cole 42 - Piscine PHP</h1>
+		
+		<div class="boutique b1">
+			<img src="ebay-logo.jpg" class="logo_boutique" tilte="eBay"/>
+			<a href="http://www.ebay.com/" class="lien_boutique">eBay</a>
+		</div>
+		<div class="boutique b2">
+			<img src="vente-privee-logo.jpg" class="logo_boutique" tilte="Ventes Privée.com"/>
+			<a href="http://fr.vente-privee.com/" class="lien_boutique">Ventes Privée.com</a>
+		</div>
+		
+	</div>
+	<div id="footer">
+		
+		<p class="copy">&copy; gpueo--g 2015</p>
+		
+	</div>
 
 </body>
 </html>
