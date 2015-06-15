@@ -1,0 +1,101 @@
+body
+{
+	background-color: rgb(81, 80, 80);
+	font-size: 10pt;
+}
+#body
+{
+	width: 1700px;
+	min-height: 300px;
+	margin: auto;
+}
+
+h1
+{
+	text-align: center;
+}
+a
+{
+	text-decoration: none;
+}
+
+.shadow
+{
+	-moz-box-shadow: 10px 10px 5px 0px #000000;
+	-webkit-box-shadow: 10px 10px 5px 0px #000000;
+	-o-box-shadow: 10px 10px 5px 0px #000000;
+	box-shadow: 10px 10px 5px 0px #000000;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#000000, Direction=134, Strength=5);
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.header
+{
+	background-color: rgb(145, 145, 145);
+	margin: auto;
+	margin-top: 40px;
+	width: 1420px;
+	height: 135px;
+}
+.header .logo
+{
+	position: relative;
+	float: left;
+	margin: 10px 0px 10px 10px;
+	width: auto;
+	height: 115px;
+}
+.header .icons
+{
+	position: relative;
+	float: right;
+	width: auto;
+	width: 20px;
+	height: 115px;
+}
+.header .icons .reload
+{
+	position: absolute;
+	float: right;
+	top: 10px;
+	right: 10px;
+	width: auto;
+	height: 20px;
+}
+.header .icons .close
+{
+	position: absolute;
+	float: right;
+	top: 100px;
+	right: 10px;
+	width: auto;
+	height: 20px;
+}
+.header .loupe
+{
+	position: relative;
+	float: right;
+	margin: 10px;
+	width: auto;
+	height: 140px;
+}
+.col-left
+{
+	background-color: rgb(145, 145, 145);
+	width: 100px;
+	height: 50px;
+}
+.col-center
+{
+	background-color: rgb(145, 145, 145);
+	width: 100px;
+	height: 50px;
+}
+.col-right
+{
+	background-color: rgb(145, 145, 145);
+	width: 100px;
+	height: 50px;
+}
