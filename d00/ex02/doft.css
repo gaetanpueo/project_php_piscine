@@ -198,9 +198,18 @@ a
 	font-size: 12pt;
 	font-family: Verdana;
 }
+.content .col-green p .it
+{
+	font-style: italic;	
+}
+.content .col-green p .ombre
+{
+	text-shadow: 5px 5px 5px red;
+}
 .content .col-green p .big
 {
-	font-size: 25pt;
+	font-size: 28pt;
+	font-family: Serif;
 }
 .content .col-green .input-text
 {
