@@ -18,6 +18,6 @@ function get_nbr()
 		echo "Le chiffre $var est Impair\n";
 	fclose($f);
 }
-while (42)
+while (1)
 	get_nbr();
 ?>
