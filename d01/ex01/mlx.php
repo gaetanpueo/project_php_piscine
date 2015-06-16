@@ -1,9 +1,8 @@
 #!/usr/bin/php
 <?php
-while ($i < 1001)
+for ($i = 0; $i < 1000; $i++)
 {
 	print "X";
-	$i++;
 }
 print "\n";
 ?>
