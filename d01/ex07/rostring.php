@@ -20,23 +20,16 @@ function ft_split($var)
 }
 if ($argc > 1)
 {
-	$i = 1;
-	$k = 0;
-	while ($i < $argc)
+	$tmp = ft_split($argv[1]);
+	$tmp[count($tmp)] = $tmp[0];
+	array_shift($tmp);
+	foreach ($tmp as $key => $value)
 	{
-		$tmp = ft_split($argv[$i]);
-		$len_tmp = count($tmp);
-		$j = 0;
-		while ($j < $len_tmp)
-		{
-			$split[$k] = $tmp[$j];
-			$j++;
-			$k++;
-		}
-		$i++;
+		if ($key == 0)
+			echo $value;
+		else
+			echo " " . $value;
 	}
-	sort($split);
-	foreach($split as $value)
-		print($value."\n");
+	echo "\n";
 }
 ?>
