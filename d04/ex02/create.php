@@ -1,30 +1,47 @@
 <?php
 
-if (!isset($_POST["login"]) || !isset($_POST["passwd"]) || $_POST["login"] === "" || $_POST["passwd"] === "" || $_POST["submit"] !== "OK")
+function checkExistingUser($arr, $user)
+{
+	foreach ($arr as $usr)
+	{
+		if ($usr["login"] === $user)
+		{
+			return TRUE;
+		}
+	}
+	return FALSE;
+}
+
+if (!$_POST["submit"] || $_POST["submit"] != "OK" || !$_POST["login"] || !$_POST["passwd"])
 {
 	echo "ERROR\n";
-	return false;
 }
-
-if (!file_exists("../private"))
-	mkdir("../private");
-
-if (file_exists("../private/passwd"))
+else
 {
-	$id_pw = unserialize(file_get_contents('../private/passwd'));
-	foreach ($id_pw as $user)
-		if ($user["login"] === $_POST["login"])
-		{
-			echo "ERROR\n";
-			return false;
-		}
+	if (!file_exists("../private"))
+	{
+		mkdir("../private");
+	}
+	if (file_exists("../private/passwd"))
+	{
+		$users = unserialize(file_get_contents("../private/passwd"));
+	}
+	else
+	{
+		$users = array();
+	}
+	if (checkExistingUser($users, $_POST["login"]))
+	{
+		echo "ERROR\n";
+	}
+	else
+	{
+		$arr["login"] = $_POST["login"];
+		$arr["passwd"] = hash("whirlpool", $_POST["passwd"]);
+		$users[] = $arr;
+		file_put_contents("../private/passwd", serialize($users));
+		echo "OK\n";
+	}
 }
-
-$new["login"] = $_POST["login"];
-$new["passwd"] = hash('whirlpool', $_POST["passwd"]);
-$id_pw[] = $new;
-file_put_contents('../private/passwd', serialize($id_pw));
-
-echo "OK\n";
 
 ?>

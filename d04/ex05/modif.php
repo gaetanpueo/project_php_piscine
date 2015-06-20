@@ -1,25 +1,53 @@
 <?php
 
-if (!$_POST['login'] || !$_POST['oldpw'] || !$_POST['newpw'] || $_POST['submit'] !== "OK" || !($tab = file_get_contents("../private/passwd")))
+function checkExistingUser($arr, $user)
 {
-	echo "ERROR\n";
-	return ;
+	$i = 0;
+	foreach ($arr as $usr)
+	{
+		if ($usr["login"] === $user)
+		{
+			return $i;
+		}
+		$i++;
+	}
+	return -1;
 }
 
-$tab = unserialize($tab);
-$oldpw = hash('whirlpool', $_POST['oldpw']);
-
-foreach ($tab as &$elem)
+if (!$_POST["login"] || !$_POST["oldpw"] || !$_POST["newpw"])
 {
-	if ($elem['login'] === $_POST['login'] && $elem['passwd'] === $oldpw)
+	echo "ERROR\n";
+}
+else
+{
+	if (($users = file_get_contents("../private/passwd")) == FALSE)
 	{
-		$elem['passwd'] = hash('whirlpool', $_POST['newpw']);
-		echo "OK\n";
-		$tab = serialize($tab);
-		file_put_contents("../private/passwd", $tab);
-		header('Location: ./index.html');
+		$users = array();
+	}
+	else
+	{
+		$users = unserialize($users);
+	}
+	
+	if (($pos = checkExistingUser($users, $_POST["login"])) < 0)
+	{
+		echo "ERROR\n";
+	}
+	else
+	{
+		if (hash("whirlpool", $_POST["oldpw"]) != $users[$pos]["passwd"])
+		{
+			echo "ERROR\n";
+		}
+		else
+		{
+			$arr["login"] = $_POST["login"];
+			$arr["passwd"] = hash("whirlpool", $_POST["newpw"]);
+			$users[$pos] = $arr;
+			file_put_contents("../private/passwd", serialize($users));
+			echo "OK\n";
+		}
 	}
 }
 
-echo "ERROR\n";
 ?>

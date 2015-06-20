@@ -1,16 +1,28 @@
 <?php
 
-function auth($login, $passwd)
-{
-	if (file_exists("../private/passwd"))
-	{
-		$id_pw = unserialize(file_get_contents('../private/passwd'));
-		foreach ($id_pw as $usr)
-			if ($usr["login"] === $login)
-				if ($usr["passwd"] === hash('whirlpool', $passwd))
-					return true;
+function checkExistingUserAuth($arr, $user) {
+	$i = 0;
+	foreach ($arr as $usr) {
+		if ($usr["login"] === $user) {
+			return $i;
+		}
+		$i++;
 	}
-	return false;
+	return -1;
+}
+
+function auth($login, $passwd) {
+	if (($users = file_get_contents("../private/passwd")) === FALSE) {
+		return FALSE;
+	}
+	$users = unserialize($users);
+	if (($pos = checkExistingUserAuth($users, $login)) < 0) {
+		return FALSE;
+	}
+	if (hash("whirlpool", $passwd) != $users[$pos]["passwd"]) {
+		return FALSE;
+	}
+	return TRUE;
 }
 
 ?>
