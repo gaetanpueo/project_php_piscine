@@ -1,0 +1,578 @@
+html
+{
+	background: url('ft_minishop/background.png') no-repeat fixed;
+}
+
+body
+{
+	margin: 0;
+	font-family: verdana;
+	font-size: 12px;
+	color: rgba(255, 255, 255, 0.3);
+	text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+a
+{
+	color: rgba(255, 255, 255, 0.3);
+	text-decoration: none;
+	transition: 0.5s color;
+}
+
+a:hover
+{
+	color: rgb(150, 135, 0);
+	transition: 0.5s color;
+}
+
+#Content
+{
+	min-height: 975px;
+
+	background: rgba(0, 0, 0, 0.3);
+	box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+
+	border-left:  1px solid rgba(255, 255, 255, 0.15);
+	border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.content
+{
+	width: 900px;
+	margin: auto;
+}
+
+#Footer
+{
+	height: 230px;
+	background: rgba(0, 0, 0, 0.45);
+	border-top: 1px solid rgba(255, 255, 255, 0.15);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+	text-align: center;
+}
+
+#Footer .content
+{
+	width:  900px;
+	margin: auto;
+	padding-top: 42px;
+	color: rgba(255, 255, 255, 0.3);
+	text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+#Footer p
+{
+	margin: 0;
+}
+
+#Header
+{
+	background: rgba(0, 0, 0, 0.45);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#Header .content
+{
+	height: 130px;
+	background: url('ft_minishop/header.png');
+}
+
+#Navigation
+{
+	background: rgba(0, 0, 0, 0.6);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#menu a
+{
+	text-decoration: none;
+	text-shadow: 0 0 0;
+	display:block; 
+	color: rgba(255, 255, 255, 0.3);
+	transition: 0.5s color;
+}
+
+#menu
+{
+	text-align: center;
+	padding: 0;
+	margin: 0;
+}
+
+#menu > li, #menu > li li
+{
+	width: 110px;
+	padding: 6px 0 7px 0;
+	position: relative;
+	display: inline-block;
+	list-style: none;
+	text-align: center;
+	transition: 0.5s background;
+}
+
+#menu > li li a
+{
+	color: rgba(255, 255, 255, 0.4);
+	text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+	transition: 0.5s color;
+}
+
+#menu > li li:hover
+{
+	background: rgba(0, 0, 0, 0.2);
+}
+
+#menu > li li:hover a
+{
+	color: rgb(150, 135, 0);
+	transition: 0.5s color;
+}
+
+#menu ul
+{
+	max-height: 0em;
+	padding: 0;
+	position: absolute;
+	top: 2.50em;
+	left: 0;
+	background: url('ft_minishop/background.png');
+	overflow: hidden;
+	transition: 0.5s max-height 0.3s;
+}
+
+#menu > li:hover
+{
+	background: rgba(0, 0, 0, 0.3);
+	transition: 0.5s background color;
+}
+
+#menu > li:hover .title
+{
+	color: rgb(150, 135, 0);
+}
+
+#menu > li:hover ul
+{
+	max-height: 13em;
+}
+
+#menu > li ul
+{
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#Slide
+{
+	height: 265px;
+	background: url('ft_minishop/slide.png');
+	border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.error
+{
+	padding: 50px 0;
+	background: rgba(0, 0, 0, 0.25);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	text-align: center;
+	text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.cartproduct
+{
+	padding: 20px 20px;
+	background: rgba(0, 0, 0, 0.1);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);	
+}
+
+.cartproduct1
+{
+	padding: 20px 20px;
+	background: rgba(0, 0, 0, 0.25);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);		
+}
+
+.submit form
+{
+	display: inline;
+	margin-right: 15px;
+}
+
+.submit input[type=submit]
+{
+	width: 100%;
+	color: rgb(150, 135, 0);
+	background: rgba(0, 0, 0, 0.25);
+	border: none;
+	padding: 5px;
+	font-size: 12px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	transition: 0.5s background;
+}
+
+.submit input[type=submit]:hover
+{
+	background: rgba(0, 0, 0, 0.3);
+}
+
+#Category td
+{
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#Category td.name
+{
+	padding: 26px 17px 26px 17px;
+}
+
+#Category td.icon
+{
+	width: 19px;
+	padding: 0 0 0 23px;
+}
+
+#Category input[type="image"]
+{
+	position: relative;
+	top: 2px;
+}
+
+#Category table
+{
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#Category td.stock
+{
+	width: 100px;
+	text-align: right;
+	padding-right: 20px;
+}
+
+#Category td.production
+{
+	color: rgb(140, 125, 0);
+	padding: 0 0 0 15px;
+	text-align: right;
+}
+
+#Category td.price
+{
+	width: 48px;
+	text-align: right;
+	padding-right: 29px;
+}
+
+#Category td.quantity
+{
+	width: 30px;
+}
+
+#Category td.quantity input
+{
+	width: 30px;
+	color: rgb(150, 135, 0);
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+	text-align: center;
+}
+
+.row
+{
+	background: rgba(0, 0, 0, 0.1);
+	text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);	
+}
+
+.row1
+{
+	background: rgba(0, 0, 0, 0.25);
+	text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);		
+}
+
+#Records table
+{
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#Records table tr:first-child
+{
+	background: rgba(0, 0, 0, 0.3);
+	transition: 0.5s background;
+}
+
+#Records table tr:hover
+{
+	background: rgba(0, 0, 0, 0.15);
+	transition: 0.5s background;
+}
+
+#Records table tr:first-child:hover
+{
+	background: rgba(0, 0, 0, 0.3);
+	transition: 0.5s background;
+}
+
+#Records table td
+{
+	padding: 20px 20px;
+	background: rgba(0, 0, 0, 0.1);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	text-align: center;
+	text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+#Records td.name
+{
+	padding: 26px 0 26px 6px;
+	text-align: left;
+}
+
+#Records td.production
+{
+	color: rgb(140, 125, 0);
+	padding: 26px 25px 26px 0;
+	text-align: right;
+}
+
+#Records td.side
+{
+	color: rgb(140, 125, 0);
+	padding-left: 25px;
+	padding-right: 0;
+	text-align: left;
+	width: 15px;
+}
+
+#Records td.artist
+{
+	width: 200px;
+	text-align: left;
+	padding: 26px 0 26px 0;
+}
+
+#Records td.track
+{
+	text-align: right;
+	padding-right: 25px;
+}
+
+#Records td.duration
+{
+	text-align: center;
+	width: 46px;
+	padding-left: 0;
+	padding-right: 5px;
+}
+
+#Records .icon
+{
+	padding-right: 14px;
+}
+
+#Records input[type="image"]
+{
+	position: relative;
+	top: 2px;
+	left: 3px;
+}
+
+#Cart td
+{
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#Cart td.name
+{
+	padding: 26px 17px 26px 17px;
+}
+
+#Cart td.icon
+{
+	width: 19px;
+	padding: 0 0 0 23px;
+}
+
+#Cart td.icon img
+{
+	width: 19px;
+	height: 19px;
+	position: relative;
+	top: 2px;
+}
+
+#Cart table
+{
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#Cart td.price
+{
+	width: 48px;
+	text-align: right;
+	padding-right: 29px;
+}
+
+#Cart td.quantity
+{
+	color: rgb(140, 125, 0);
+	width: 30px;
+	text-align: right;
+	padding-right: 10px;
+}
+
+#Cart td.total
+{
+	text-align: right;
+	padding: 26px 29px 26px 17px;
+	background: none;
+	background: rgba(0, 0, 0, 0.05);
+}
+
+.message
+{
+	padding: 27px 0;
+	background: rgba(0, 0, 0, 0.2);
+	text-align: center;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+#Signup table
+{
+	width: 350px;
+	margin: auto;
+	position: relative;
+	top: 100px;
+}
+
+#Signup input[type="text"]
+{
+	width: 350px;
+	color: rgb(150, 135, 0);
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+	padding: 5px 10px 5px 10px;
+	font-size: 14px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+#Signup input[type="password"]
+{
+	width: 350px;
+	color: rgba(255, 255, 255, 0.3);
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+	padding: 5px 10px 5px 10px;
+	font-size: 14px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+#Signup input[type="password"]:first-child
+{
+	margin-top: 10px;
+}
+
+#Signup input[type="password"]:last-child
+{
+	margin-bottom: 10px;
+}
+
+#Signup input[type=submit]
+{
+	width: 100%;
+	color: rgb(150, 135, 0);
+	background: rgba(0, 0, 0, 0.25);
+	margin-top: 10px;
+	border: none;
+	padding: 5px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	transition: 0.5s background;
+}
+
+#Signup input[type=submit]:hover
+{
+	background: rgba(0, 0, 0, 0.3);
+}
+
+#Signin table
+{
+	width: 350px;
+	margin: auto;
+	position: relative;
+	top: 100px;
+}
+
+#Signin input[type="text"]
+{
+	width: 350px;
+	color: rgb(150, 135, 0);
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+	padding: 5px 10px 5px 10px;
+	font-size: 14px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+#Signin input[type="password"]
+{
+	width: 350px;
+	color: rgba(255, 255, 255, 0.3);
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+	padding: 5px 10px 5px 10px;
+	font-size: 14px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+#Signin input[type="password"]:first-child
+{
+	margin-top: 10px;
+}
+
+#Signin input[type="password"]:last-child
+{
+	margin-bottom: 10px;
+}
+
+#Signin input[type=submit]
+{
+	width: 100%;
+	color: rgb(150, 135, 0);
+	background: rgba(0, 0, 0, 0.25);
+	margin-top: 10px;
+	border: none;
+	padding: 5px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	transition: 0.5s background;
+}
+
+#Signin input[type=submit]:hover
+{
+	background: rgba(0, 0, 0, 0.3);
+}
+
+.warning
+{
+	color: rgb(150, 135, 0);
+	background: rgba(0, 0, 0, 0.25);
+	border: none;
+	padding: 5px;
+	font-size: 12px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	transition: 0.5s background;
+	text-align: center;
+}
