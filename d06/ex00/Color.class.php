@@ -1,56 +1,85 @@
-<?PHP
-Class Color
+<?php
+class Color
 {
-	public static $verbose = FALSE;
 	public $red = 0;
 	public $green = 0;
 	public $blue = 0;
-	public static function doc()
+	public static $verbose = False;
+	static function doc()
 	{
-		print (file_get_contents("./Color.doc.txt"));
-		return;
+		return (file_get_contents("./Color.class.txt"));
 	}
-	public function __construct(array $kwargs)
+	function add($instance)
 	{
-		if (array_key_exists('red', $kwargs))
-			$this->red = $kwargs['red'] % 256;
-		if (array_key_exists('blue', $kwargs))
-			$this->blue = $kwargs['blue'] % 256;
-		if (array_key_exists('green', $kwargs))
-			$this->green = $kwargs['green'] % 256;
-		if (array_key_exists('rgb', $kwargs))
+		$tab = get_object_vars($instance);
+		return (new Color(array('red' => ($this->red + $tab['red']), 'green' => ($this->green + $tab['green']), 'blue' => ($this->blue + $tab['blue']))));
+	}
+	function sub($instance)
+	{
+		$tab = get_object_vars($instance);
+		return (new Color(array('red' => ($this->red - $tab['red']), 'green' => ($this->green - $tab['green']), 'blue' => ($this->blue - $tab['blue']))));
+	}
+	function mult($factor)
+	{
+		return (new Color(array('red' => ($this->red * $factor), 'green' => ($this->green * $factor), 'blue' => ($this->blue * $factor))));
+	}
+	function hex2rgb($hex)
+	{
+		if(strlen($hex) == 3)
 		{
-			$this->red = ($kwargs['rgb'] >> 16) % 256;
-			$this->green = ($kwargs['rgb'] >> 8) % 256;
-			$this->blue = $kwargs['rgb'] % 256;
+			$r = hexdec(substr($hex,0,1).substr($hex,0,1));
+			$g = hexdec(substr($hex,1,1).substr($hex,1,1));
+			$b = hexdec(substr($hex,2,1).substr($hex,2,1));
 		}
-		if (self::$verbose == TRUE)
-			printf( 'Color(red: %3d, green: %3d, blue: %3d) constructed.' . PHP_EOL, $this->red, $this->green, $this->blue);
-		return;
+		else
+		{
+			$r = hexdec(substr($hex,0,2));
+			$g = hexdec(substr($hex,2,2));
+			$b = hexdec(substr($hex,4,2));
+		}
+		$rgb = array($r, $g, $b);
+		return $rgb;
 	}
-	public function __destruct()
+	function __construct(array $kwargs)
 	{
-		if (self::$verbose == TRUE)
-		printf( 'Color(red: %3d, green: %3d, blue: %3d) destructed.' . PHP_EOL, $this->red, $this->green, $this->blue);
-		return;
+		if ($kwargs['red'] !== null && $kwargs['green'] !== null && $kwargs['blue'] !== null)
+		{
+			foreach ($kwargs as $key => $val)
+				$val = intval($val);
+			$this->red = round($kwargs['red']);
+			$this->green = round($kwargs['green']);
+			$this->blue = round($kwargs['blue']);
+		}
+		if ($kwargs['rgb'] !== null)
+		{
+			$tmp = intval($kwargs['rgb']);
+			$tmp = dechex($tmp);
+			$len = 6 - strlen($tmp);
+			$i = 0;
+			while ($i < $len)
+			{
+				$hex = $hex."0";
+				$i++;
+			}
+			$hex = $hex.$tmp;
+			$rgb = $this->hex2rgb($hex);
+			$this->red = $rgb['0'];
+			$this->green = $rgb['1'];
+			$this->blue = $rgb['2'];
+		}
+		if (self::$verbose === True)
+			print('Color( red: '.$this->red.', green: '.$this->green.', blue: '.$this->blue.' ) constructed.'.PHP_EOL);
+		return ;
 	}
-	public function __toString()
+	function __destruct()
 	{
-		return (sprintf('Color(red: %3d, green: %3d, blue: %3d)', $this->red, $this->green, $this->blue));
+		if (self::$verbose === True)
+			print('Color( red: '.$this->red.', green: '.$this->green.', blue: '.$this->blue.' ) destructed.'.PHP_EOL);
+		return ;
 	}
-	public function add(Color $instance)
+	function __toString()
 	{
-		return (new Color(array('red' => $this->red + $instance->red, 'green' => $this->green + $instance->green, 'blue' => $this->blue + $instance->blue)));
-	}
-	
-	public function sub(Color $instance)
-	{
-		return (new Color(array('red' => $this->red - $instance->red, 'green' => $this->green - $instance->green, 'blue' => $this->blue - $instance->blue)));
-	}
-	
-	public function mult($nb)
-	{
-		return (new Color(array('red' => $this->red * $nb, 'green' => $this->green * $nb, 'blue' => $this->blue * $nb)));
+		return ('Color( red: '.$this->red.', green: '.$this->green.', blue: '.$this->blue.' )');
 	}
 }
 ?>
