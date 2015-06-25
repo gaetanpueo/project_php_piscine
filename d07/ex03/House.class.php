@@ -1,6 +1,8 @@
 <?php
-class House
+
+Class House
 {
 	
 }
+
 ?>
