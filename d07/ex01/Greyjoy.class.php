@@ -1,6 +1,8 @@
 <?php
-class Greyjoy
+
+Class Greyjoy
 {
-	
+	protected $familyMotto = "We do not sow";
 }
+
 ?>
