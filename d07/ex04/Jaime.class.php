@@ -1,6 +1,8 @@
 <?php
-class Jaime
+
+Class Jaime
 {
 	
 }
+
 ?>
