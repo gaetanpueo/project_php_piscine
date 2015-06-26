@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>calc</title>
+</head>
+<body>
+	<form>
+		<input type="text" id="mg" value="" />
+		<select id="op">
+			<option value="+">+</option>
+			<option value="-">-</option>
+			<option value="*">*</option>
+			<option value="/">/</option>
+			<option value="%">%</option>
+		</select>
+		<input type="text" id="md" value="" />
+		<input type="submit" value="Try me!" onclick="calc()"/>
+	</form>
+	
+	<script type="text/javascript">
+		function calc()
+		{
+			var mg = document.getElementById("mg").value * 1;
+			var op = document.getElementById("op").value;
+			var md = document.getElementById("md").value * 1;
+			
+			if (IsPosInteger(mg) != 0 && IsPosInteger(md) != 0)
+			{
+				if (op == "+")
+				{
+					var res = mg + md;
+				}
+				if (op == "-")
+				{
+					var res = mg - md;
+				}
+				if (op == "*")
+				{
+					var res = mg * md;
+				}
+				if (op == "/")
+				{
+					if (md != 0)
+					{
+						var res = mg / md;
+					}
+					else
+					{
+						alert("It’s over 9000!");
+						console.log("It’s over 9000!");
+						return ;
+					}
+				}
+				if (op == "%")
+				{
+					if (md != 0)
+					{
+						var res = mg % md;
+					}
+					else
+					{
+						alert("It’s over 9000!");
+						console.log("It’s over 9000!");
+						return ;
+					}
+				}
+				
+				alert(res);
+				console.log(res);
+			}
+			else
+			{
+				alert("Error :(");
+				console.log("Error :(");
+			}
+		}
+		function IsPosInteger(nbr)
+		{
+			return (/^\d+$/.test(nbr) && (parseInt(nbr,10)>=0));
+		}
+		
+		setInterval(function(){alert("Please, use me...")}, 30000);
+	</script>
+</body>
+</html>
