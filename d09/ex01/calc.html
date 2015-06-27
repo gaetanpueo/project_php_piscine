@@ -1,86 +1,86 @@
-<!DOCTYPE HTML>
 <html>
-<head>
-	<meta charset="utf-8">
-	<title>calc</title>
-</head>
-<body>
-	<form>
-		<input type="text" id="mg" value="" />
-		<select id="op">
-			<option value="+">+</option>
-			<option value="-">-</option>
-			<option value="*">*</option>
-			<option value="/">/</option>
-			<option value="%">%</option>
-		</select>
-		<input type="text" id="md" value="" />
-		<input type="submit" value="Try me!" onclick="calc()"/>
-	</form>
-	
-	<script type="text/javascript">
-		function calc()
-		{
-			var mg = document.getElementById("mg").value * 1;
-			var op = document.getElementById("op").value;
-			var md = document.getElementById("md").value * 1;
-			
-			if (IsPosInteger(mg) != 0 && IsPosInteger(md) != 0)
-			{
-				if (op == "+")
-				{
-					var res = mg + md;
-				}
-				if (op == "-")
-				{
-					var res = mg - md;
-				}
-				if (op == "*")
-				{
-					var res = mg * md;
-				}
-				if (op == "/")
-				{
-					if (md != 0)
-					{
-						var res = mg / md;
-					}
-					else
-					{
-						alert("It’s over 9000!");
-						console.log("It’s over 9000!");
-						return ;
-					}
-				}
-				if (op == "%")
-				{
-					if (md != 0)
-					{
-						var res = mg % md;
-					}
-					else
-					{
-						alert("It’s over 9000!");
-						console.log("It’s over 9000!");
-						return ;
-					}
-				}
-				
-				alert(res);
-				console.log(res);
-			}
-			else
-			{
-				alert("Error :(");
-				console.log("Error :(");
-			}
+	<head>
+		<meta charset="utf-8">
+		<style>
+		.outer {
+			display: table;
+			position: absolute;
+			height: 100%;
+			width: 100%;
 		}
-		function IsPosInteger(nbr)
-		{
-			return (/^\d+$/.test(nbr) && (parseInt(nbr,10)>=0));
+		.middle {
+			display: table-cell;
+			vertical-align: middle;
 		}
-		
-		setInterval(function(){alert("Please, use me...")}, 30000);
-	</script>
-</body>
+		.center {
+			margin-left: 30%;
+			margin-right: 30%;
+			vertical-align: center;
+		}
+		</style>
+		<title>calc</title>
+	</head>
+	<body>
+		<div class="outer">
+			<div class="middle">
+				<form class="center" method="POST">
+					<fieldset style="border: 0;">
+						<input name="nbleft" type="text" value="">
+						<select name="operator">
+							<option value="+">+</option>
+							<option value="-">-</option>
+							<option value="*">*</option>
+							<option value="//">/</option>
+							<option value="%">%</option>
+						</select>
+						<input name="nbright" type="text" value="">
+						<input align="right" type="submit" value="Try me!" id="dothemath">		
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</body>
 </html>
+
+<script language="javascript">
+	var submit = document.getElementById( "dothemath" );
+	var input_left = document.getElementsByName( "nbleft" );
+	var input_right = document.getElementsByName( "nbright" );
+	var operator_el = document.getElementsByName( "operator" );
+	submit.onclick = processForm;
+
+	function processForm() {
+		var nbleft = input_left[0].value;
+		var nbright = input_right[0].value;		
+		var operator = operator_el[0].value;
+		if ( isValid( nbleft, nbright, operator ) == false ) {
+			return;
+		}
+		var result = eval( nbleft +  operator + nbright ) ;
+		console.log( result );
+		alert( result );
+	}
+
+	function isValid( nbleft, nbright, operator ) {
+		if ( nbleft && !isNaN( nbleft ) && nbright && !isNaN( nbright ) && nbright == 0 && ( operator == "//" || operator == "%" ) ) {
+			logAlert( "It’s over 9000!" );
+			return false;
+		}
+		if ( !nbright || !nbleft || isNaN( nbleft ) || isNaN( nbright ) || !isInt( nbleft ) || !isInt( nbright ) ||nbright < 0 || nbleft < 0 ) {
+			logAlert( "Error :(" );
+			return false;
+		}
+		return true;
+	}
+
+	function logAlert( str ) {
+		if (window.console) console.log( str );
+		alert( str );
+	}
+
+	function isInt( n ) {
+		return n % 1 === 0;
+	}
+
+	setInterval( function() { alert( "Please, use me..." ) }, 30000 );
+</script>

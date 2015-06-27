@@ -19,13 +19,11 @@ function createCookie(name, value, days) {
 function removeTask(id) {
 
 	if (confirm("Etes-vous sur de vouloir supprimer cette tache ?")) {
-		var element = document.getElementById(id);
-		var son = element.firstChild;
-		element.parentNode.removeChild(element);
-		son = son.data + "/-/-/" + id;
+		query_id = "#" + id;
+		var son = $(query_id).text();
+		son = son + "/-/-/" + id;
 		createCookie(son, "", -1);
-		son.parentNode.removeChild(son);
-		element.parentNode.removeChild(element);
+		$(query_id).remove();
 	}
 }
 
@@ -35,16 +33,12 @@ function newTask() {
 	task = task.replace(";", ",");
 	task = task.replace("=", "->");
 	createCookie(task + "/-/-/" + pId, "my_cookie", 1);
-	var div = document.getElementById('ft_list');
-	var newDiv = document.createElement('div');
-	var content = task;
-	var content = document.createTextNode(content);
-	newDiv.appendChild(content);
-	newDiv.setAttribute("onclick", "removeTask("+pId+")");
-	newDiv.setAttribute("id", pId);
+	$('<div />', {
+		onclick : "removeTask("+pId+")",
+		id : pId,
+	}).insertAfter("#new").text(task);
 	pId++;
 	createCookie("my_cookie_id", pId, 1);
-	div.insertBefore(newDiv, div.firstChild);
 }
 
 function getCookie() {
@@ -54,7 +48,6 @@ function getCookie() {
 
 function listTasks() {
 
-	var div = document.getElementById('ft_list');
 	var tasks = getCookie();
 	var len = tasks.length;
 
@@ -64,12 +57,10 @@ function listTasks() {
 		if (content[1] == "my_cookie") {
 			splited = content[0].split("/-/-/");
 			splited[0] = splited[0].substring(1);
-			var newDiv = document.createElement('div');
-			var newContent = document.createTextNode(splited[0]);
-			newDiv.appendChild(newContent);
-			newDiv.setAttribute("onclick", "removeTask("+splited[1]+")");
-			newDiv.setAttribute("id", splited[1]);
-			div.appendChild(newDiv);
+			$('<div />', {
+				onclick : "removeTask("+splited[1]+")",
+				id : splited[1],
+			}).insertAfter("#new").text(splited[0]);
 		}
 		else if (content[0] == "my_cookie_id") {
 

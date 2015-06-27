@@ -1,59 +1,82 @@
-<!DOCTYPE HTML>
 <html>
-<head>
+  <head>
 	<meta charset="utf-8">
-	<title>balloon</title>
 	<style>
-		#balloon
-		{
-			background-color: #FF0000;
-			width: 200px;
+		.outer {
+			display: table;
+			position: absolute;
+			height: 100%;
+			width: 100%;
+		}
+		.middle {
+			display: table-cell;
+			vertical-align: middle;
+		}
+		.center {
+			margin-left: auto;
+			margin-right: auto;
+			vertical-align: center;
+		}
+		.circle {
 			height: 200px;
+			width: 200px;
 			border-radius: 50%;
 		}
-	</style>
-</head>
-<body>
-	<div onclick="balloon()" onmouseout="out()" id="balloon"></div>
-	
-	<script type="text/javascript">
-		function balloon()
-		{
-			var x = document.getElementById("balloon").offsetWidth;
-			var y = document.getElementById("balloon").offsetHeight;
-			var color = document.getElementById("balloon").style.backgroundColor;
-			
-			document.getElementById("balloon").style.width  = (x + 10) + "px";
-			document.getElementById("balloon").style.height = (y + 10) + "px";
-			if (x > 420)
-			{
-				document.getElementById("balloon").style.width  = "200px";
-				document.getElementById("balloon").style.height = "200px";
-			}
-			if (color == "#FF0000")
-			{
-				document.getElementById("balloon").style.backgroundColor = "#00FF00";
-			}
-			if (color == "#00FF00")
-			{
-				document.getElementById("balloon").style.backgroundColor = "#0000FF";
-			}
-			if (color == "#0000FF")
-			{
-				document.getElementById("balloon").style.backgroundColor = "#FF0000";
-			}
+		.bg-red {
+			background-color: red;
 		}
-		function out()
-		{
-			var x = document.getElementById('balloon').offsetWidth;
-			var y = document.getElementById('balloon').offsetHeight;
-			
-			if (x >= 205 && y >= 205)
-			{
-				document.getElementById('balloon').style.width  = (x - 5) + "px";
-				document.getElementById('balloon').style.height = (y - 5) + "px";
+	</style>
+	<title>balloon</title>
+  </head>
+  <body>
+	<div class="outer">
+		<div class="middle">
+			<div class="center circle bg-red" id="balloon">	  
+			</div>
+		</div>
+	</div>
+
+	<script language="javascript">
+		document.getElementById( "balloon" ).onclick = increase;
+		document.getElementById( "balloon" ).addEventListener( "mouseout", mouseout );
+		
+		function increase() {
+			var balloon = document.getElementById( "balloon" );
+			var width = parseInt( balloon.offsetWidth );
+			if ( width < 420 ) {
+				balloon.style.width = width + 10 + "px";
+				balloon.style.height = width + 10 + "px";
 			}
+			else {
+				balloon.style.width = "200px";
+				balloon.style.height = "200px";
+			}
+			changeColor( "UP" );
+		}
+		
+		function mouseout() {
+			var balloon = document.getElementById( "balloon" );
+			var width = parseInt( balloon.offsetWidth );
+			if ( width > 200 ) {
+				balloon.style.width = width - 5 + "px";
+				balloon.style.height = width - 5 + "px";
+			}
+			else
+				return;
+			changeColor( "DOWN" );
+		}
+		
+		function changeColor( $dir ) {	
+			var Color = balloon.style.backgroundColor;
+			if ( !Color ) { Color = "red" };
+			if ( Color == "red")
+				Color = ( $dir === "UP" ? "green" : "blue" );
+			else if ( Color == "green" )
+				Color = ( $dir === "UP" ? "blue" : "red" );
+			else
+				Color = ( $dir === "UP" ? "red" : "green" );
+			balloon.style.backgroundColor = Color;
 		}
 	</script>
-</body>
+  </body>
 </html>
